@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable Boolean aBoolean) {
                 Log.i(TAG, "onChanged: requireSignUp");
-                fragmentManager.beginTransaction().setCustomAnimations(android.R.anim.slide_in_left, R.anim.slide_out_right, R.anim.slide_in_right, R.anim.slide_out_left)
+                fragmentManager.beginTransaction().setCustomAnimations(R.anim.slide_in_top, R.anim.slide_out_down, R.anim.slide_in_down, R.anim.slide_out_top)
                         .replace(R.id.login_fragments_container, new SignUpAsFragment())
                         .addToBackStack(null)
                         .commit();
