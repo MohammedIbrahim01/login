@@ -200,7 +200,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            usersNode.child(firebaseAuth.getCurrentUser() == null ? "anonymous" : firebaseAuth.getCurrentUser().getUid()).setValue(new User(firebaseAuth.getCurrentUser().getDisplayName(), "normal"));
+                            usersNode.child(firebaseAuth.getCurrentUser().getUid()).setValue(new User(firebaseAuth.getCurrentUser().getDisplayName(), "normal"));
                             startActivity(new Intent(getContext(), MainActivity.class));
                             getActivity().finish();
                         } else {
@@ -217,7 +217,7 @@ public class SignInFragment extends Fragment implements View.OnClickListener {
         if (requestCode == RC_GOOGLE_SIGN_IN) {
 
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            if (result.isSuccess()) {
+            if (result.isSuccess() && result.getSignInAccount() != null) {
 
                 GoogleSignInAccount account = result.getSignInAccount();
                 authFirebaseWithGoogleAccount(account);

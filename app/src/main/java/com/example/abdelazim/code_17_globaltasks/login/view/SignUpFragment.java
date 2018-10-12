@@ -196,7 +196,6 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                             usersNode.child(firebaseAuth.getUid()).setValue(new User(name, mUserRole));
                             getActivity().finish();
                             startActivity(new Intent(getActivity(), MainActivity.class));
-                            Toast.makeText(getContext(), "hello " + name, Toast.LENGTH_SHORT).show();
                         } else
                             Toast.makeText(getActivity(), "sign up failed", Toast.LENGTH_SHORT).show();
                     }
